@@ -46,9 +46,25 @@ print(f"Test Loss: {loss:.4f}")
 print(history.history)
 
 #Visualization
-plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-plt.plot(history.history['accuracy'], label='Training Accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.legend()
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+# Subplot 1: Accuracy
+ax1.plot(history.history['accuracy'], label='Training Accuracy', marker='o')
+ax1.plot(history.history['val_accuracy'], label='Validation Accuracy', marker='o')
+ax1.set_xlabel('Epochs')
+ax1.set_ylabel('Accuracy')
+ax1.set_title('Model Accuracy')
+ax1.legend()
+ax1.grid(True)
+
+# Subplot 2: Loss
+ax2.plot(history.history['loss'], label='Training Loss', marker='o')
+ax2.plot(history.history['val_loss'], label='Validation Loss', marker='o')
+ax2.set_xlabel('Epochs')
+ax2.set_ylabel('Loss')
+ax2.set_title('Model Loss')
+ax2.legend()
+ax2.grid(True)
+
+plt.tight_layout()
 plt.show()
