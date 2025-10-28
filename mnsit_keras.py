@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 print(x_train.dtype)
 print(x_train.shape)
-print(x_train[0])
+#print(x_train[0])
 #plt.imshow(x_train[0],cmap='gray')
 #print(f"Label: {y_train[0]}")
 #plt.show()
@@ -35,7 +35,9 @@ model.add(Dense(128, activation='relu'))#128 neurons in hidden layer
 model.add(Dense(10, activation='softmax'))#10 neurons in output layer for 10 classes
 
 #Compile the model
-model.compile(optimizer='adam', loss='categorical_crossentropy')
-
+model.compile(optimizer='adam', loss='categorical_crossentropy',metrics=['accuracy'])
 #Train the model
 model.fit(x_train, y_train, epochs=10, batch_size=64)
+
+#test the model
+model.evaluate(x_test, y_test)
