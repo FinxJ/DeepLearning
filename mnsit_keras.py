@@ -40,4 +40,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy',metrics=['accura
 model.fit(x_train, y_train, epochs=10, batch_size=64)
 
 #test the model
-model.evaluate(x_test, y_test)
+loss,accuracy=model.evaluate(x_test, y_test)
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
+print(f"Test Loss: {loss:.4f}")
